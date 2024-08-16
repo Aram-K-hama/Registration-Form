@@ -1,0 +1,26 @@
+body {
+    background-color: #f0f2f5; /* Light grey background */
+    color: #333; /* Dark grey text for readability */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    color: #0056b3; /* Dark blue heading */
+    letter-spacing: 1px;
+}
+
+.form-control:focus {
+    border-color: #0056b3; /* Blue border on focus */
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.2); /* Light blue shadow on focus */
+}
+
+.btn-primary {
+    background-color: #0056b3; /* Dark blue button */
+    border-color: #0056b3;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #004494; /* Slightly darker blue on hover */
+    box-shadow: 0 4px 8px rgba(0, 86, 179, 0.2); /* Add shadow on hover */
+}

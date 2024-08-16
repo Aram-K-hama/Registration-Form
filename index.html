@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فۆڕمی کارمەند</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="design.css">
+</head>
+
+<body>
+    <main class="container py-4">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8 mt-5">
+                <h2 class="text-center mb-5 fw-bolder fs-1">فۆڕمی کارمەند</h2> 
+                <form>
+                    <!-- Employee Name -->
+                    <div class="mb-4 row"> 
+                        <label for="employeeName1" class="form-label col-12 fs-5"> ناوی چواری کارمەند</label>
+                        <div class="col-3">
+                            <input type="text" class="form-control" id="employeeName1" name="employeeName1" placeholder="ناوی یەکەم" required>
+                        </div>
+                        <div class="col-3">
+                            <input type="text" class="form-control" id="employeeName2" name="employeeName2" placeholder="ناوی دووەم" required>
+                        </div>
+                        <div class="col-3">
+                            <input type="text" class="form-control" id="employeeName3" name="employeeName3" placeholder="ناوی سێیەم" required>
+                        </div>
+                        <div class="col-3">
+                            <input type="text" class="form-control" id="employeeName4" name="employeeName4" placeholder="ناوی چوارەم" required>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="mb-4"> 
+                        <label for="certification" class="form-label fs-5">بڕوانامە</label>
+                        <div id="certificationContainer">
+                            <input type="text" class="form-control mb-2" id="certification1" name="certification[]" placeholder="بڕوانامە" required>
+                        </div>
+                        <button type="button" class="btn btn-primary mt-2 rounded-pill px-4" id="addCertificationBtn" onclick="addCertificationField()">زیادکردنی بڕوانامەی تر</button>
+                    </div>
+
+                    <!-- Position -->
+                    <div class="mb-4"> 
+                        <label for="position" class="form-label fs-5"> پسپۆڕی</label> 
+                        <input type="text" class="form-control" id="position" name="position" placeholder="پسپۆڕی " required>
+                    </div>
+
+                    <!-- Certification Documents -->
+                    <div class="mb-4"> 
+                        <label for="certificationDocument" class="form-label fs-5">بەڵگەنامەی بڕوانامە</label> 
+                        <div id="certificationDocumentContainer">
+                            <div class="input-group mb-2">
+                                <input type="file" class="form-control" id="certificationDocument" name="certificationImages[]" accept="image/*" multiple required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rank and Department -->
+                    <div class="mb-4 row"> 
+                        <div class="col-md-6">
+                            <label for="rank" class="form-label fs-5">پلە</label> 
+                            <input type="text" class="form-control" id="rank" name="rank" placeholder="پلە" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="department" class="form-label fs-5">بەش</label> 
+                            <input type="text" class="form-control" id="department" name="department" placeholder="بەش" required>
+                        </div>
+                    </div>
+
+                    <!-- Hire Date and Certification -->
+                    <div class="mb-4"> 
+                        <label for="hireDate" class="form-label fs-5">بەرواری دامەزراندن</label> 
+                        <input type="date" class="form-control" id="hireDate" name="hireDate" required>
+                    </div>
+                    <div class="mb-4"> 
+                        <label for="hireCertification" class="form-label fs-5">بەڵگەنامەی بەرواری دامەزراندن</label> 
+                        <div id="hireCertificationContainer">
+                            <div class="input-group mb-2">
+                                <input type="file" class="form-control" id="hireCertification" name="hireCertificationImages[]" accept="image/*" multiple required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Start Date and Certification -->
+                    <div class="mb-4 row"> 
+                        <div class="col-md-6">
+                            <label for="startDate" class="form-label fs-5">بەرواری دەستبەکاربوون</label> 
+                            <input type="date" class="form-control" id="startDate" name="startDate" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="startCertification" class="form-label fs-5">بەڵگەنامەی بەرواری دەستبەکاربوون</label> 
+                            <div id="startCertificationContainer">
+                                <div class="input-group mb-2">
+                                    <input type="file" class="form-control" id="startCertification" name="startCertificationImage" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End Date and Certification -->
+                    <div class="mb-4 row"> 
+                        <div class="col-md-6">
+                            <label for="endDate" class="form-label fs-5">بەرواری کۆتایی گرێبەست</label> 
+                            <input type="date" class="form-control" id="endDate" name="endDate" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="endCertification" class="form-label fs-5">بەڵگەنامەی بەرواری کۆتایی گرێبەست</label>
+                            <div id="endCertificationContainer">
+                                <div class="input-group mb-2">
+                                    <input type="file" class="form-control" id="endCertification" name="endCertificationImage" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job Type -->
+                    <div class="mb-4"> 
+                        <label for="jobType" class="form-label fs-5">جۆری کار</label> 
+                        <input type="text" class="form-control" id="jobType" name="jobType" placeholder="جۆری کار " required>
+                    </div>
+
+                    <!-- Shift Time -->
+                    <div class="mb-4"> 
+                        <label for="shiftTime" class="form-label fs-5">کاتی دەوام (شەفت)</label> 
+                        <select class="form-select" id="shiftTime" name="shiftTime" required>
+                            <option value="" disabled selected>شەفت هەڵبژێرە</option>
+                            <option value="morning">شەفتی بەیانیان</option>
+                            <option value="evening">شەفتی ئێواران</option>
+                        </select>
+                    </div>
+
+                    <!-- ID and ID Type -->
+                    <div class="mb-4 row"> 
+                        <div class="col-md-4">
+                            <label for="employeeId" class="form-label fs-5">ژمارەی ناسنامە</label> 
+                            <input type="number" class="form-control" id="employeeId" name="employeeId" placeholder="ناسنامە بنوسە" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="idType" class="form-label fs-5">جۆری ناسنامە</label> 
+                            <input type="text" class="form-control" id="idType" name="idType" placeholder="جۆری کار " required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="idCertification" class="form-label fs-5">بەڵگەنامەی ناسنامە (ئەتاچ)</label>
+                            <div id="idCertificationContainer">
+                                <div class="input-group mb-2">
+                                    <input type="file" class="form-control" id="idCertification" name="idCertificationImage" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Numbers -->
+                    <div class="mb-4 row"> 
+                        <label for="mobile1" class="form-label fs-5">ژمارەی مۆبایل (تکایە دوو ژمارە موبایل دەخڵ بکە)</label> 
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" id="mobile1" name="mobile1" placeholder="ژمارەی مۆبایل ١ بنوسە" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" id="mobile2" name="mobile2" placeholder="ژمارەی مۆبایل ٢ بنوسە">
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-4"> 
+                        <label for="email" class="form-label fs-5">ئیمەیڵ</label> 
+                        <input type="email" class="form-control" id="email" name="email" placeholder="نموونە: example@gmail.com" required>
+                        <div class="invalid-feedback">
+                            تکایە ئیمەیڵێکی دروست بنوسە.
+                        </div>
+                    </div>
+
+                    <!-- Special Needs -->
+                    <div class="mb-4"> 
+                        <label class="form-label fs-5">ئایا کەمئەندامی ؟</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="specialNeed" id="specialNeedYes" value="yes" onclick="toggleSpecialNeed(true)" required>
+                            <label class="form-check-label" for="specialNeedYes">بەڵێ</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="specialNeed" id="specialNeedNo" value="no" onclick="toggleSpecialNeed(false)" required>
+                            <label class="form-check-label" for="specialNeedNo">نەخێر</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 row" id="specialNeedDetails" style="display: none;"> 
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="injuryType" name="injuryType" placeholder="جۆری کەمئەندامی" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="file" class="form-control" id="injuryDocument" name="injuryDocument" accept="image/*,application/pdf" required>
+                        </div>
+                    </div>
+
+                    <!-- Salary and Currency -->
+                    <div class="mb-4 row"> 
+                        <div class="col-md-9">
+                            <label for="positionSelect" class="form-label fs-5">مووچە بە پێی پلە</label> 
+                            <select class="form-select" id="positionSelect" name="positionSelect" onchange="updateSalaryPlaceholders()" required>
+                                <option value="" disabled selected>پلەی خۆت هەلبژێرە</option>
+                                <option value="manager">بەرێوبەر</option>
+                                <option value="developer">پڕۆگرامەری سۆفتوێر</option>
+                                <option value="designer">دیزانەر</option>
+                                <option value="analyst">ئانالیزەر</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="currencySelect" class="form-label fs-5">جۆری دراو</label> 
+                            <select class="form-select" id="currencySelect" name="currencySelect" onchange="updateSalaryPlaceholders()" required>
+                                <option value="IQD" selected>IQD - دیناری عێراق</option>
+                                <option value="USD">USD - دۆلاری ئەمریکا</option>
+                                <option value="EUR">EUR - یۆرۆ</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Min and Max Salary -->
+                    <div class="mb-4 row"> 
+                        <div class="col-md-6">
+                            <label for="minSalary" class="form-label fs-5">نزمترین مووچە</label> 
+                            <input type="number" class="form-control" id="minSalary" name="minSalary" placeholder="نزمترین مووچە بنوسە" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="maxSalary" class="form-label fs-5">بەرزترین مووچە</label> 
+                            <input type="number" class="form-control" id="maxSalary" name="maxSalary" placeholder="بەرزترین مووچە بنوسە" required>
+                        </div>
+                    </div>
+
+                    <!-- Employee Code -->
+                    <div class="mb-4"> 
+                        <label for="employeeCode" class="form-label fs-5">کۆدی کارمەند</label> 
+                        <div class="input-group">
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" id="employeeCode" name="employeeCode" placeholder="کۆدی کارمەند لێرە پیشان دەدرێت" readonly required>
+                                </div>
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-primary rounded-pill" id="generateCodeBtn" onclick="generateEmployeeCode()">کۆدی نوێ دروست بکە</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Username and Password -->
+                    <div class="mb-4 row"> 
+                        <label for="username" class="form-label fs-5">تکایە ناو و وشەی نهێنی بنوسە بۆ ئەوەی سیستەم ئەکاونتێکت بۆ دروست بکات</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="ناوی بەکارهێنەر بنوسە" required>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="password" name="password" placeholder="وشەی نهێنی بنوسە" required>
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <button type="button" class="btn btn-primary w-100 rounded-pill" id="generateAccountBtn" onclick="generateEmployeeAccount()">دروستکردنی ئەکاونت</button>
+                        </div>
+                    </div>
+
+                    <!-- RFID Barcode -->
+                    <div class="mb-4"> 
+                        <label for="rfidBarcode" class="form-label fs-5">باڕکۆد</label> 
+                        <input type="text" class="form-control" id="rfidBarcode" name="rfidBarcode" placeholder="نموونە: 1234ABCD5678EFGH9012IJKL" maxlength="24" required>
+                    </div>
+
+                    <!-- Employee Photo -->
+                    <div class="mb-4"> 
+                        <label for="employeePhoto" class="form-label fs-5">وێنەی کارمەند</label> 
+                        <input class="form-control" type="file" id="employeePhoto" name="employeePhoto" accept="image/*" required>
+                    </div>
+
+                    <!-- Emergency Contact -->
+                    <div class="mb-4"> 
+                        <label for="emergencyContactName" class="form-label fs-5">پەیوەندی بەپەلە (ئیمرجێنسی): بۆ پەیوەندیکردن لەحاڵەتی کتوپڕ</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="emergencyContactName" name="emergencyContactName" placeholder="ناوی پەیوەندیکەر بنوسە" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" class="form-control" id="emergencyContactPhone" name="emergencyContactPhone" placeholder="ژمارە مۆبایل بنوسە" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Work Location and Manager -->
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-4"> 
+                                <label for="companyAddressSelect" class="form-label fs-5">لە کام شار دەتەوێت دەست بە کار بکەیت ؟</label> 
+                                <select class="form-select" id="companyAddressSelect" name="companyAddressSelect" required>
+                                    <option value="" disabled selected>ناوی شار هەلبژێرە</option>
+                                    <option value="city1">سلێمانی</option>
+                                    <option value="city2">هەولێر</option>
+                                    <option value="city3">کەرکوک</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-4"> 
+                                <label for="managerName" class="form-label fs-5">بەڕێوەبەرەکەی کێیە</label> 
+                                <input type="text" class="form-control" id="managerName" name="managerName" placeholder="ناوی بەڕێوەبەر بنوسە" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Birthdate -->
+                    <div class="mb-4"> 
+                        <label for="birthDate" class="form-label fs-5">بەرواری لەدایکبوون</label>
+                        <input type="date" class="form-control" id="birthDate" name="birthDate" onchange="checkBirthday()" required>
+                    </div>
+
+                    <!-- Gender and Marital Status -->
+                    <div class="row mt-4">
+                        <div class="col-4">
+                            <div class="mb-4">
+                                <label class="form-label fs-5">رەگەز</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male" required>
+                                    <label class="form-check-label" for="genderMale">نێر</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="female" required>
+                                    <label class="form-check-label" for="genderFemale">مێ</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
+                        <div class="col-6">
+                            <div class="mb-4"> 
+                                <label class="form-label fs-5">باری خێزانی</label> 
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="maritalStatus" id="statusSingle" value="single" onchange="checkMaritalStatus()" required>
+                                    <label class="form-check-label" for="statusSingle">سینگڵ</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="maritalStatus" id="statusMarried" value="married" onchange="checkMaritalStatus()" required>
+                                    <label class="form-check-label" for="statusMarried">خێزاندار</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Children Section -->
+                    <div id="childrenSection" class="mb-4" style="display: none;"> 
+                        <label for="numberOfChildren" class="form-label fs-5">ژمارەی منداڵ</label> 
+                        <input type="number" class="form-control" id="numberOfChildren" name="numberOfChildren" min="0" placeholder="ژمارەی منداڵ لێرە بنوسە">
+                    </div>
+
+                    <!-- Nationality and Distance to Company -->
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="mb-4"> 
+                                <label for="nationality" class="form-label fs-5">نەتەوە</label> 
+                                <select class="form-select" id="nationality" name="nationality" required>
+                                    <option value="" disabled selected>نەتەوەی خۆت هەلبژێرە</option>
+                                    <option value="iraqi">عێراقی</option>
+                                    <option value="persian">ئێرانی</option>
+                                    <option value="turkish">تورکی</option>
+                                    <option value="surian">سوری</option>
+                                    <option value="other">ئەوی تر</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="mb-4">
+                                <label for="distanceToCompany" class="form-label fs-5">دووری ماڵ لە کۆمپانیا بە (کیلۆمەتر)</label> 
+                                <input type="number" class="form-control" id="distanceToCompany" name="distanceToCompany" min="0" step="0.1" placeholder="دوری ماڵی تۆ لە کۆمپانیا بنوسە" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Work and Personal Mobile -->
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-4"> 
+                                <label for="workMobile" class="form-label fs-5">مۆبایلی کار</label> 
+                                <input type="number" class="form-control" id="workMobile" name="workMobile" placeholder="ژمارە مۆبایلی کار لێرە بنوسە" required>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-4"> 
+                                <label for="personalMobile" class="form-label fs-5">مۆبایلی کەسی</label> 
+                                <input type="number" class="form-control" id="personalMobile" name="personalMobile" placeholder="ژمارە مۆبایلی کەسی لێرە بنوسە" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Work Locations -->
+                    <div class="mb-4"> 
+                        <label for="workLocations" class="form-label fs-5">شوێنی کار (دوگمەی کۆنترۆڵ داگرە ئەگەر زیاتر لە هەڵبژاردنێک بوو)</label> 
+                        <select class="form-select" id="workLocations" name="workLocations" multiple required>
+                            <option value="office1">بەختیاری</option>
+                            <option value="office2">ڕەند گەلەری</option>
+                            <option value="office3">عەقاری</option>
+                        </select>
+                    </div>
+
+                    <!-- Employee Type -->
+                    <div class="mb-4"> 
+                        <label for="employeeType" class="form-label fs-5">جۆری کارمەند</label> 
+                        <select class="form-select" id="employeeType" name="employeeType" required>
+                            <option value="" disabled selected>جۆری کارمەند هەلبژێرە</option>
+                            <option value="employee">کارمەند</option>
+                            <option value="student">خوێندکار</option>
+                            <option value="trainer">راهێنەر</option>
+                            <option value="contractor">عقد</option>
+                            <option value="freelancer">فری لانسەر</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="text-center my-5"> 
+                        <button type="submit" class="btn btn-primary rounded-pill px-4 fs-4">ناردن</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
